@@ -12,6 +12,9 @@ import useDownloadPdf from "@/hooks/useDownloadPdf";
 import SignInModal from "@/components/shared/SignInModal";
 import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
+import { Card, CardContent } from "@/components/ui/card";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 export function TashkeelVowelizationComponent() {
   const [inputText, setInputText] = useState("");
@@ -21,14 +24,11 @@ export function TashkeelVowelizationComponent() {
   const { downloadPdf } = useDownloadPdf();
   const [showSignInModal, setShowSignInModal] = useState(false);
 
-
   const { extractTextFromFile, extractedText, loading, error } =
     useFileTextExtractor();
 
-    const { isAuthenticated } = useUser();
-    const router = useRouter()
-  
-
+  const { isAuthenticated } = useUser();
+  const router = useRouter();
 
   const handleFileUpload = async (event) => {
     const uploadedFile = event.target.files?.[0];
@@ -39,7 +39,6 @@ export function TashkeelVowelizationComponent() {
       await extractTextFromFile(uploadedFile);
     }
   };
-
 
   const handleSignIn = () => {
     setShowSignInModal(false);
@@ -105,24 +104,30 @@ export function TashkeelVowelizationComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <div className="min-h-screen bg-white p-8">
-        <div className="max-w-4xl mx-auto space-y-6">
-          {/* title  */}
-          <h1 className="text-3xl font-bold text-[#20b1c9] text-center">
-            التشكيل
-          </h1>
+      <ServiceTitle title="التشكيل" />
 
-          {/* input section  */}
-          <Textarea
-            placeholder="أدخل النص الذي تريد تشكيله هنا."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            className="w-full h-40 p-4 border-2 border-[#1C9AAF] rounded-md focus:outline-none focus:ring-2 focus:ring-[#20b1c9]"
-            dir="rtl"
-          />
 
-          {/* file upload section  */}
-          {/* <div className="flex items-center space-x-4" dir="rtl">
+      <ServiceDescription
+        description="
+      تهدف إلى تسهيل قراءة وفهم النصوص العربية من خلال إضافة الحركات التشكيلية اللازمة للكلمات. تتيح هذه الخدمة للمستخدمين إدخال نصوص غير مشكّلة، ليقوم النظام بتحليلها وتشكيلها تلقائياً بدقة عالية، مما يساعد على إزالة الغموض وزيادة الوضوح في المعنى. تعد هذه الخدمة مفيدة للطلاب، المعلمين، والكتّاب وكل من يرغب في كتابة نصوص عربية مشكّلة بشكل صحيح وسريع. يعتمد النظام على تقنيات الذكاء الاصطناعي المتقدمة لضمان دقة التشكيل وسرعة التنفيذ
+      "
+      />
+
+      <Card className="max-w-4xl mx-auto mb-10">
+        <CardContent className=" pt-4">
+          <div className="bg-white p-8">
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* input section  */}
+              <Textarea
+                placeholder="أدخل النص الذي تريد تشكيله هنا."
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                className="w-full h-40 p-4 border-2 border-[#1C9AAF] rounded-md focus:outline-none focus:ring-2 focus:ring-[#20b1c9]"
+                dir="rtl"
+              />
+
+              {/* file upload section  */}
+              {/* <div className="flex items-center space-x-4" dir="rtl">
             <Button
               onClick={() => document.getElementById("fileInput")?.click()}
               className="bg-[#1C9AAF] hover:bg-[#20b1c9] text-white ml-2"
@@ -143,55 +148,57 @@ export function TashkeelVowelizationComponent() {
             </span>
           </div> */}
 
-          {/* submission section  */}
-          <Button
-            onClick={handleStartTashkeel}
-            disabled={isLoading || (!inputText && !file)}
-            className="w-full bg-[#20b1c9] hover:bg-[#1C9AAF] text-white"
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> جارٍ
-                المعالجة...
-              </>
-            ) : (
-              "ابدأ التشكيل"
-            )}
-          </Button>
-
-          {/* vowelizedText section  */}
-          {vowelizedText && (
-            <div className="p-4 border-2 border-[#1C9AAF] rounded-md">
-              <h2
-                className="text-xl font-semibold mb-2 text-[#20b1c9]"
-                dir="rtl"
+              {/* submission section  */}
+              <Button
+                onClick={handleStartTashkeel}
+                disabled={isLoading || (!inputText && !file)}
+                className="w-full bg-[#20b1c9] hover:bg-[#1C9AAF] text-white"
               >
-                النص المُشَكَّل:
-              </h2>
-              <p className="text-lg" dir="rtl">
-                {vowelizedText}
-              </p>
-            </div>
-          )}
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> جارٍ
+                    المعالجة...
+                  </>
+                ) : (
+                  "ابدأ التشكيل"
+                )}
+              </Button>
 
-          {/* download and reset buttons  */}
-          <div className="flex space-x-4">
-            <Button
-              onClick={handleReset}
-              className="flex-1 bg-white text-[#20b1c9] border-2 border-[#20b1c9] hover:bg-[#20b1c9] hover:text-white"
-            >
-              <RefreshCw className="mr-2 h-4 w-4" /> إعادة تعيين
-            </Button>
-            <Button
-              onClick={handleExportResults}
-              disabled={!vowelizedText}
-              className="flex-1 bg-[#1C9AAF] hover:bg-[#20b1c9] text-white"
-            >
-              <Download className="mr-2 h-4 w-4" /> تصدير النتائج
-            </Button>
+              {/* vowelizedText section  */}
+              {vowelizedText && (
+                <div className="p-4 border-2 border-[#1C9AAF] rounded-md">
+                  <h2
+                    className="text-xl font-semibold mb-2 text-[#20b1c9]"
+                    dir="rtl"
+                  >
+                    النص المُشَكَّل:
+                  </h2>
+                  <p className="text-lg" dir="rtl">
+                    {vowelizedText}
+                  </p>
+                </div>
+              )}
+
+              {/* download and reset buttons  */}
+              <div className="flex space-x-4">
+                <Button
+                  onClick={handleReset}
+                  className="flex-1 bg-white text-[#20b1c9] border-2 border-[#20b1c9] hover:bg-[#20b1c9] hover:text-white"
+                >
+                  <RefreshCw className="mr-2 h-4 w-4" /> إعادة تعيين
+                </Button>
+                <Button
+                  onClick={handleExportResults}
+                  disabled={!vowelizedText}
+                  className="flex-1 bg-[#1C9AAF] hover:bg-[#20b1c9] text-white"
+                >
+                  <Download className="mr-2 h-4 w-4" /> تصدير النتائج
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </>
   );
 }

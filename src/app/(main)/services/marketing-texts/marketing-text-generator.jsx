@@ -19,6 +19,8 @@ import { useUser } from "@/contexts/UserContext";
 import { useActivityLog } from "@/contexts/ActivityLogContext";
 import SignInModal from "@/components/shared/SignInModal";
 import { useRouter } from "next/navigation";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 export function MarketingTextGeneratorComponent() {
   const [product, setProduct] = useState("");
@@ -32,8 +34,7 @@ export function MarketingTextGeneratorComponent() {
   const { isAuthenticated, user } = useUser();
   const { addActivityLog } = useActivityLog();
   const [showSignInModal, setShowSignInModal] = useState(false);
-  const router = useRouter()
-
+  const router = useRouter();
 
   const handleSignIn = () => {
     setShowSignInModal(false);
@@ -102,7 +103,6 @@ export function MarketingTextGeneratorComponent() {
   };
 
   const handleExportText = () => {
-
     if (!isAuthenticated) {
       setShowSignInModal(true);
       return;
@@ -132,14 +132,17 @@ export function MarketingTextGeneratorComponent() {
         onClose={handleCloseSignInModal}
       />
 
+      <ServiceTitle title="مولد النص التسويقي" />
+
+      <ServiceDescription
+        description='
+      خدمة مولد النصوص التسويقية في موقع "فصيح" مصممة لمساعدة الشركات والأفراد في صياغة محتوى تسويقي مؤثر وجذاب باللغة العربية. تتيح هذه الخدمة للمستخدمين إنشاء نصوص تسويقية احترافية تلبي احتياجاتهم المختلفة، سواء كانت للإعلانات، أو وسائل التواصل الاجتماعي، أو الحملات التسويقية عبر البريد الإلكتروني، وغيرها. يعتمد مولد النصوص التسويقية على نموذج ذكاء اصطناعي متقدم يفهم اللغة العربية ويستطيع توليد محتوى مميز يلائم الجمهور المستهدف ويبرز الفوائد الرئيسية للمنتجات أو الخدمات
+      '
+      />
+
       <div className="min-h-screen bg-white p-8">
         <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-[#20b1c9] text-center my-5">
-              مولد النص التسويقي
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6" dir="rtl">
+          <CardContent className="space-y-6 pt-4" dir="rtl">
             <div className="space-y-2">
               <Label htmlFor="product">اسم المنتج/الخدمة</Label>
               <Input

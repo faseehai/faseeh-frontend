@@ -24,7 +24,7 @@ const menu = [
         icon: <Mails className="h-4  w-4 ml-1" />,
       },
       {
-        name: "مدقق القواعد الإملائية والنحوية",
+        name: "خدمة الإعراب",
         href: "/services/grammer-checker",
         icon: <ClipboardCheck className="h-4  w-4 ml-1" />,
       },
@@ -76,7 +76,7 @@ const menu = [
     ],
   },
   {
-    name: "معلومات عنا",
+    name: "قنوات الاتصال",
     href: "/about-us",
     icon: <Store className="h-4 w-4 ml-1" />,
   },

@@ -28,8 +28,11 @@ export function Navbar({ menu = [] }) {
       <div className="max-w-7xl mx-auto px-1 py-1 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* logo image  */}
-          <div className="flex items-center">
-            <Link href="/" className="ms-0 h-14 w-14 md:h-16 md:w-16 rounded-[50%]">
+          <div className="md:hidden flex items-center">
+            <Link
+              href="/"
+              className="ms-0 h-14 w-14 md:h-16 md:w-16 rounded-[50%]"
+            >
               <img
                 src="/images/logo.png"
                 alt="Company Logo"
@@ -38,27 +41,43 @@ export function Navbar({ menu = [] }) {
             </Link>
           </div>
 
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="hidden md:block ml-8 px-4 py-2 rounded-md text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#005bea]"
+            >
+              تسجيل الخروج
+            </button>
+          ) : (
+            <button
+              onClick={handleLogin}
+              className="hidden md:block ml-8 px-4 py-2 rounded-md text-sm font-medium text-white bg-[#20b1c9] hover:bg-[#1C9AAF] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#005bea]"
+            >
+              تسجيل الدخول
+            </button>
+          )}
+
           {/* menu items for large screen  */}
           <div className="hidden md:block" dir="rtl">
-            <div className="ml-10 flex items-baseline space-x-4 rounded-lg">
-              {isAuthenticated ? (
-                <button
-                  onClick={handleLogout}
-                  className="ml-8 px-4 py-2 rounded-md text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#005bea]"
+            <div className="flex">
+              <div className="flex items-center mx-10">
+                <Link
+                  href="/"
+                  className="ms-0 h-14 w-14 md:h-16 md:w-16 rounded-[50%]"
                 >
-                  تسجيل الخروج
-                </button>
-              ) : (
-                <button
-                  onClick={handleLogin}
-                  className="ml-8 px-4 py-2 rounded-md text-sm font-medium text-white bg-[#20b1c9] hover:bg-[#1C9AAF] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#005bea]"
-                >
-                  تسجيل الدخول
-                </button>
-              )}
-              {menu.map((item) => (
-                <Dropdown key={item.name} item={item} />
-              ))}
+                  <img
+                    src="/images/logo.png"
+                    alt="Company Logo"
+                    className="w-full h-full object-contain rounded-[50%]"
+                  />
+                </Link>
+              </div>
+
+              <div className="ml-10  flex items-baseline space-x-4 rounded-lg mt-5">
+                {menu.map((item) => (
+                  <Dropdown key={item.name} item={item} />
+                ))}
+              </div>
             </div>
           </div>
 

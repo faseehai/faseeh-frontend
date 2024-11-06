@@ -44,24 +44,24 @@ export function HomePageComponent() {
     {
       icon: Book,
       title: "حائك قصص الأطفال",
-      description: "اجلب خيال الأطفال إلى الحياة",
+      description: "أمثال عربية بقصص مشوقة",
       url: "/services/children-stories",
     },
     {
       icon: CheckCircle,
-      title: "المحترف الدقيق",
+      title: "حارس القواعد",
       description: "محتوى خالي من العيوب، في كل مرة",
       url: "/services/proof-reading",
     },
     {
       icon: Type,
       title: "خبير التشكيل",
-      description: "تشكيل مثالي للعربية بنقرة واحدة",
+      description: "تشكيل مثالي بنقرة واحدة",
       url: "/services/tashkeel",
     },
     {
       icon: CheckSquare,
-      title: "حارس القواعد",
+      title: "محترف الإعراب",
       description: "مُحسن لغتك الشخصي",
       url: "/services/grammer-checker",
     },
@@ -134,11 +134,11 @@ export function HomePageComponent() {
           </motion.h2>
           <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-600">
             اختبر مستقبل إنشاء المحتوى مع أدواتنا المتقدمة للذكاء الاصطناعي. من
-            الرسائل الإلكترونية إلى القصص، نحن نُحدث ثورة في أسلوبك في الكتابة
+            الرسائل الإلكترونية إلى القصص، نحن نُحدث تغييرا في أسلوبك في الكتابة
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button className="bg-[#20b1c9] hover:bg-[#1C9AAF] text-white text-xl px-12 py-6 rounded-full shadow-lg transition-all duration-300">
-              ابدأ في صنع السحر
+            ابدأ معنا
             </Button>
           </motion.div>
         </motion.section>

@@ -20,6 +20,8 @@ import { useUser } from "@/contexts/UserContext";
 import { useActivityLog } from "@/contexts/ActivityLogContext";
 import SignInModal from "@/components/shared/SignInModal";
 import { useRouter } from "next/navigation";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 export function GrammarSpellCheckComponent() {
   const [inputText, setInputText] = useState("");
@@ -32,8 +34,7 @@ export function GrammarSpellCheckComponent() {
   const { isAuthenticated, user } = useUser();
   const { addActivityLog } = useActivityLog();
   const [showSignInModal, setShowSignInModal] = useState(false);
-  const router = useRouter()
-
+  const router = useRouter();
 
   const handleSignIn = () => {
     setShowSignInModal(false);
@@ -108,7 +109,6 @@ export function GrammarSpellCheckComponent() {
   };
 
   const handleExportResult = () => {
-
     if (!isAuthenticated) {
       setShowSignInModal(true);
       return;
@@ -135,14 +135,17 @@ export function GrammarSpellCheckComponent() {
         onClose={handleCloseSignInModal}
       />
 
+      <ServiceTitle title="خدمة التدقيق النحوي والإملائي" />
+
+      <ServiceDescription
+        description='
+      خدمة التدقيق اللغوي في موقع "فصيح" مصممة لمساعدة المستخدمين في تحسين جودة نصوصهم العربية من خلال اكتشاف وتصحيح الأخطاء الإملائية، النحوية، والأسلوبية. تتيح هذه الخدمة للمستخدمين إدخال نصوصهم لتحليلها، حيث يقوم النظام بفحص النص وتحديد الأخطاء المحتملة واقتراح التصحيحات المناسبة. سواء كنت كاتباً، طالباً، أو محترفاً، ستساعدك هذه الخدمة على تحسين دقة وسلاسة كتابتك باللغة العربية. يعتمد النظام على تقنيات متقدمة في معالجة اللغة الطبيعية لضمان تقديم نتائج دقيقة وموثوقة
+      '
+      />
+
       <div className="min-h-screen bg-white p-8">
         <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-[#20b1c9] text-center my-5">
-              خدمة التدقيق النحوي والإملائي
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 pt-4">
             <Textarea
               placeholder="أدخل النص الذي تريد التحقق منه هنا."
               value={inputText}

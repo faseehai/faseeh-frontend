@@ -64,44 +64,6 @@ function Footer() {
   return (
     <>
       <footer className="footer bg-[#DEF4F7] text-black opacity-80 p-10 md:grid md:grid-cols-4 font_barlow">
-        <aside data-aos="fade-up">
-          <div className="flex items-start justify-start">
-            <Link href="/" className="ms-0 h-14 w-14 md:h-16 md:w-16 rounded-full ">
-              <img
-                src="/images/logo.png"
-                alt="Company Logo"
-                className="w-full h-full object-contain rounded-[50%]"
-              />
-            </Link>
-          </div>
-
-          <p className="text-justify" dir="rtl">
-            تضمن شركة فصيح نجاح عملك من خلال تقديم خدمات لغوية عربية لا مثيل لها
-            مع التزام متفانٍ في تقديم خدمات التدقيق اللغوي والتحليل النحوي. نؤمن
-            بأن النجاح يتحقق معاً، حيث نصيغ النصوص ونصقلها لتحقيق التميز.
-          </p>
-
-          {/* social media link  */}
-          <div className="flex justify-center items-center gap-x-2 ">
-            <Link href={"https://twitter.com/faseehapp"}>
-              <FaSquareXTwitter className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
-            </Link>
-            <Link href={"https://www.instagram.com/faseeh.app/"}>
-              <RiInstagramFill className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
-            </Link>
-            <Link href={"https://www.youtube.com/@/faseeh.app/"}>
-              <FaYoutube className="text-4xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
-            </Link>
-            <Link
-              href={
-                "https://www.linkedin.com/company/80291042/admin/feed/posts/"
-              }
-            >
-              <FaLinkedin className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
-            </Link>
-          </div>
-        </aside>
-
         {/* Quick link  */}
         <nav className="md:ms-10" data-aos="fade-up">
           <h6 className="footer-title text-[#1C9AAF]">روابط سريعة</h6>
@@ -119,7 +81,7 @@ function Footer() {
 
         {/* service  */}
         <nav data-aos="fade-up">
-          <h6 className="footer-title text-[#1C9AAF] z-10">خدماتنا</h6>
+          <h6 className="footer-title text-[#1C9AAF] z-10" >خدماتنا</h6>
           {services.map((link, index) => (
             <Link
               key={index}
@@ -153,6 +115,51 @@ function Footer() {
             </div>
           </div>
         </nav>
+
+        <aside data-aos="fade-up">
+          <div className="w-full flex items-end justify-end">
+            <div className="flex items-start justify-start">
+              <Link
+                href="/"
+                className="ms-0 h-14 w-14 md:h-16 md:w-16 rounded-full "
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="Company Logo"
+                  className="w-full h-full object-contain rounded-[50%]"
+                />
+              </Link>
+            </div>
+          </div>
+
+          <p className="text-justify" dir="rtl">
+            يضمن موقع فصيح نجاح عملك من خلال تقديم خدمات لغوية عربية متميزة مع
+            التزام متفانٍ في تقديم خدمات التدقيق اللغوي والتحليل النحوي، نؤمن
+            بأن النجاح يتحقق معاً، حيث نصيغ النصوص ونصقلها لتحقيق التميز
+          </p>
+
+          {/* social media link  */}
+          <div className="w-full flex items-end justify-end">
+            <div className="flex justify-center items-center gap-x-2 ">
+              <Link href={"https://twitter.com/faseehapp"}>
+                <FaSquareXTwitter className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
+              </Link>
+              <Link href={"https://www.instagram.com/faseeh.app/"}>
+                <RiInstagramFill className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
+              </Link>
+              <Link href={"https://www.youtube.com/@/faseeh.app/"}>
+                <FaYoutube className="text-4xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
+              </Link>
+              <Link
+                href={
+                  "https://www.linkedin.com/company/80291042/admin/feed/posts/"
+                }
+              >
+                <FaLinkedin className="text-3xl text-[#1C9AAF] hover:scale-110 hover:font-semibold transition-all" />
+              </Link>
+            </div>
+          </div>
+        </aside>
       </footer>
 
       <div className="bg-[#DEF4F7] relative pt-10 pb-1 overflow-hidden h-10 border-b border-[#1C9AAF]">
@@ -178,8 +185,8 @@ function Footer() {
         // data-aos="fade-right"
         className="footer bg-[#DEF4F7] text-base-content flex justify-center p-5"
       >
-        <span className="text-lg font-semibold text-[#20b1c9]" dir="rtl">
-          © 2021-24 فصيح. جميع الحقوق محفوظة.
+        <span className="text-lg font-semibold text-[#20b1c9]">
+          © 2024 All rights reserved.
         </span>
       </footer>
     </>
