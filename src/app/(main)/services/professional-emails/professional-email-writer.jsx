@@ -38,6 +38,8 @@ import { useUser } from "@/contexts/UserContext";
 import { useActivityLog } from "@/contexts/ActivityLogContext";
 import SignInModal from "@/components/shared/SignInModal";
 import { useRouter } from "next/navigation";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 const formSchema = z.object({
   purpose: z
@@ -73,7 +75,7 @@ export function ProfessionalEmailWriterComponent() {
   const { addActivityLog } = useActivityLog();
   const [showSignInModal, setShowSignInModal] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -84,7 +86,6 @@ export function ProfessionalEmailWriterComponent() {
       cta: "",
     },
   });
-
 
   const handleSignIn = () => {
     setShowSignInModal(false);
@@ -147,7 +148,6 @@ export function ProfessionalEmailWriterComponent() {
   };
 
   const handleExportEmail = (email) => {
-
     if (!isAuthenticated) {
       setShowSignInModal(true);
       return;
@@ -180,189 +180,193 @@ export function ProfessionalEmailWriterComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="container mx-auto p-4 max-w-4xl bg-[#ffffff] overflow-hidden"
-        dir="rtl"
-      >
-        {/* main title  */}
-        <motion.h1
-          initial={{ y: -20 }}
-          animate={{ y: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="text-3xl font-bold mb-6 text-center text-[#20b1c9]"
-        >
-          كاتب بريد إلكتروني محترف
-        </motion.h1>
+      <ServiceTitle title=" كاتب بريد إلكتروني محترف" />
 
-        {/* form  section*/}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="mb-6"
-        >
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(handleGenerateEmail)}
-              className="space-y-6"
-            >
-              {/* purpose field  */}
-              <FormField
-                control={form.control}
-                name="purpose"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>غرض</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="أدخل غرض البريد الإلكتروني"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <ServiceDescription
+        description="
+      تساعد خدمة رسائل البريد الإلكتروني الاحترافية في كتابة رسائل واضحة ومنظمة، سواء للاستخدام الرسمي أو الشخصي. يتم تصميم الرسائل لتناسب الهدف المحدد، مثل إرسال طلبات، متابعة مهام، أو تقديم شكر. تضمن الخدمة أن تكون الرسائل مكتوبة بأسلوب مهني وجذاب، مع تنظيم دقيق للمعلومات ونبرة مناسبة. هذه الخدمة توفر للمستخدمين رسائل فعالة تسهم في تحقيق الأهداف المطلوبة بطريقة احترافية وسلسة
+      "
+      />
 
-              {/* recipient field  */}
-              <FormField
-                control={form.control}
-                name="recipient"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>المستلم</FormLabel>
-                    <FormControl>
-                      <Input placeholder="أدخل اسم المستلم" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Tone field */}
-              <FormField
-                control={form.control}
-                name="tone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>نبرة</FormLabel>
-                    <Select
-                      onValueChange={(value) => {
-                        field.onChange(value); // Update form value
-                      }}
-                      value={field.value} // Bind the select value to the form value
-                      dir="rtl"
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="اختر نبرة البريد الإلكتروني" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="formal">رسمي</SelectItem>
-                        <SelectItem value="friendly">ودود</SelectItem>
-                        <SelectItem value="informal">غير رسمي</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* mainDetails field  */}
-              <FormField
-                control={form.control}
-                name="mainDetails"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>التفاصيل الرئيسية</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="أدخل التفاصيل الرئيسية"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* cta field  */}
-              <FormField
-                control={form.control}
-                name="cta"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>دعوة للعمل</FormLabel>
-                    <FormControl>
-                      <Input placeholder="أدخل دعوة للعمل" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* submit  and reset buttons  */}
-              <div className="flex gap-4">
-                <Button type="submit" disabled={isGenerating}>
-                  {isGenerating ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      جاري التوليد...
-                    </>
-                  ) : (
-                    "توليد بريد إلكتروني"
-                  )}
-                </Button>
-                <Button type="reset" variant="outline" onClick={resetForm}>
-                  إعادة تعيين
-                </Button>
-              </div>
-            </form>
-          </Form>
-        </motion.div>
-
-        {/* generated email section  */}
-        <AnimatePresence>
-          {generatedEmail && (
+      <Card className="max-w-4xl mx-auto mb-10">
+        <CardContent className=" pt-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="container mx-auto p-4 max-w-4xl bg-[#ffffff] overflow-hidden"
+            dir="rtl"
+          >
+            {/* form  section*/}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="mb-6"
             >
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle>البريد الإلكتروني المُولد</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <pre className="whitespace-pre-wrap">{generatedEmail}</pre>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button onClick={handleSaveEmail} disabled={isEmailSaved}>
-                    {isEmailSaved
-                      ? "تم حفظ البريد الإلكتروني"
-                      : "احفظ في سجل النشاط"}
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      handleExportEmail({
-                        recipient: form.getValues("recipient"),
-                        content: generatedEmail,
-                      })
-                    }
-                  >
-                    تصدير البريد الإلكتروني
-                  </Button>
-                </CardFooter>
-              </Card>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(handleGenerateEmail)}
+                  className="space-y-6"
+                >
+                  {/* purpose field  */}
+                  <FormField
+                    control={form.control}
+                    name="purpose"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>غرض</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="أدخل غرض البريد الإلكتروني"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* recipient field  */}
+                  <FormField
+                    control={form.control}
+                    name="recipient"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>المستلم</FormLabel>
+                        <FormControl>
+                          <Input placeholder="أدخل اسم المستلم" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Tone field */}
+                  <FormField
+                    control={form.control}
+                    name="tone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نبرة</FormLabel>
+                        <Select
+                          onValueChange={(value) => {
+                            field.onChange(value); // Update form value
+                          }}
+                          value={field.value} // Bind the select value to the form value
+                          dir="rtl"
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="اختر نبرة البريد الإلكتروني" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="formal">رسمي</SelectItem>
+                            <SelectItem value="friendly">ودود</SelectItem>
+                            <SelectItem value="informal">غير رسمي</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* mainDetails field  */}
+                  <FormField
+                    control={form.control}
+                    name="mainDetails"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>التفاصيل الرئيسية</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="أدخل التفاصيل الرئيسية"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* cta field  */}
+                  <FormField
+                    control={form.control}
+                    name="cta"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>دعوة للعمل</FormLabel>
+                        <FormControl>
+                          <Input placeholder="أدخل دعوة للعمل" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* submit  and reset buttons  */}
+                  <div className="flex gap-4">
+                    <Button type="submit" disabled={isGenerating}>
+                      {isGenerating ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          جاري التوليد...
+                        </>
+                      ) : (
+                        "توليد بريد إلكتروني"
+                      )}
+                    </Button>
+                    <Button type="reset" variant="outline" onClick={resetForm}>
+                      إعادة تعيين
+                    </Button>
+                  </div>
+                </form>
+              </Form>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+
+            {/* generated email section  */}
+            <AnimatePresence>
+              {generatedEmail && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                  <Card className="mb-6">
+                    <CardHeader>
+                      <CardTitle>البريد الإلكتروني المُولد</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <pre className="whitespace-pre-wrap">
+                        {generatedEmail}
+                      </pre>
+                    </CardContent>
+                    <CardFooter className="flex justify-between">
+                      <Button onClick={handleSaveEmail} disabled={isEmailSaved}>
+                        {isEmailSaved
+                          ? "تم حفظ البريد الإلكتروني"
+                          : "احفظ في سجل النشاط"}
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          handleExportEmail({
+                            recipient: form.getValues("recipient"),
+                            content: generatedEmail,
+                          })
+                        }
+                      >
+                        تصدير البريد الإلكتروني
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </CardContent>
+      </Card>
     </>
   );
 }

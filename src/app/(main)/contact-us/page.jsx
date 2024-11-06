@@ -1,10 +1,16 @@
 "use client";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { IoLocationOutline } from "react-icons/io5";
-import { LuPhoneCall } from "react-icons/lu";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import MediaPlayer from "@/components/shared/MediaPlayer";
+import { FaWhatsapp } from "react-icons/fa6";
+import { toast } from "@/hooks/use-toast";
+// Inside your contact-us page
+import dynamic from "next/dynamic";
+
+// Dynamically import MediaPlayer with SSR disabled
+const MediaPlayer = dynamic(() => import("@/components/shared/MediaPlayer"), {
+  ssr: false,
+});
 
 function ContactUsPage() {
   const {
@@ -17,15 +23,20 @@ function ContactUsPage() {
   const onSubmit = async (data) => {
     console.log(data);
 
+    toast({
+      title: "تم الارسال بنجاح",
+      description: "فريقنا سيتواصل معك قريبًا",
+      variant: "success",
+    });
+
     // Clear the form fields after submission
     reset();
   };
 
   return (
-    <div className="overflow-x-hidden text-white">
-
+    <div className="overflow-x-hidden text-white px-[6.5%] pt-[25%] md:pt-[10%]">
       {/* contact us section  */}
-      <div className="w-full flex flex-col items-center gap-2 pb-5 mt-[20%] md:mt-[4%]">
+      {/* <div className="w-full flex flex-col items-center gap-2 pb-5 mt-[20%] md:mt-[4%]">
         <span className="inline-block mt-20 text-2xl uppercase border-b-4 text-[#20b1c9]">
           تواصل معنا
         </span>
@@ -44,11 +55,11 @@ function ContactUsPage() {
           تواصل معنا لحجز موعدك. اتصل بنا مباشرة أو املأ نموذج معلومات الاتصال
           لأننا نأتي إليك!
         </p>
-      </div>
+      </div> */}
 
       {/* contact details  */}
-      <div className="min-h-[40vh] grid grid-cols-1 md:grid-cols-3 gap-5 m-5 md:mx-10">
-        <div className="bg-base-300 flex flex-col gap-5 items-center justify-center rounded-3xl text-white p-5">
+      <div className="min-h-[40vh] grid grid-cols-1 md:grid-cols-3 gap-5 m-5 md:mx-10 mb-[10%]">
+        <div className="bg-black/15 flex flex-col gap-5 items-center justify-center rounded-3xl text-white p-5">
           <div className="bg-[#20b1c9] w-20 h-20 rounded-full flex items-center justify-center">
             <IoLocationOutline className="text-5xl text-white" />
           </div>
@@ -56,27 +67,27 @@ function ContactUsPage() {
           <h1 className="text-2xl font-bold">عنوان</h1>
           <p
             data-aos="fade-up"
-            className="mt-2 text-md text-opacity-85 font_barlow text-center "
+            className="mt-2 text-md text-opacity-85 font_barlow text-center font-bold"
           >
-            2360 Hood Avenue, San Diego, CA, 92123
+            المملكة العربية السعودية – القصيم - بريدة
           </p>
         </div>
-        
+
         <div className="bg-[#20b1c9] flex flex-col gap-5 items-center justify-center rounded-3xl text-white p-5">
-          <div className="bg-base-300 w-20 h-20 rounded-full flex items-center justify-center">
-            <LuPhoneCall className="text-5xl text-white" />
+          <div className="bg-black/15 w-20 h-20 rounded-full flex items-center justify-center">
+            <FaWhatsapp className="text-5xl text-white" />
           </div>
 
           <h1 className="text-2xl font-bold">رقم الهاتف</h1>
           <p
             data-aos="fade-up"
-            className="mt-2 text-md text-opacity-85 font_barlow text-center "
+            className="mt-2 text-md text-opacity-85 font_barlow text-center font-bold"
           >
-            02012156485
+            +966505668558
           </p>
         </div>
-        
-        <div className="bg-base-300 flex flex-col gap-5 items-center justify-center rounded-3xl text-white p-5">
+
+        <div className="bg-black/15 flex flex-col gap-5 items-center justify-center rounded-3xl text-white p-5">
           <div className="bg-[#20b1c9] w-20 h-20 rounded-full flex items-center justify-center">
             <MdOutlineAttachEmail className="text-5xl text-white" />
           </div>
@@ -84,7 +95,7 @@ function ContactUsPage() {
           <h1 className="text-2xl font-bold">صندوق البريد الخاص بنا</h1>
           <p
             data-aos="fade-up"
-            className="mt-2 text-md text-opacity-85 font_barlow text-center "
+            className="mt-2 text-md text-opacity-85 font_barlow text-center font-bold"
           >
             contact@example.com
           </p>
@@ -99,7 +110,7 @@ function ContactUsPage() {
           data-aos="fade-right"
           dir="rtl"
         >
-           <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* Name Field */}
             <div className="mb-4">
               <label
@@ -138,7 +149,9 @@ function ContactUsPage() {
                 }`}
               />
               {errors.email && (
-                <p className="text-red-500 text-xs mt-2">حقل البريد الإلكتروني</p>
+                <p className="text-red-500 text-xs mt-2">
+                  حقل البريد الإلكتروني
+                </p>
               )}
             </div>
 
@@ -148,10 +161,10 @@ function ContactUsPage() {
                 htmlFor="subject"
                 className="block text-sm font-medium text-gray-200"
               >
-                 موضوع الرسالة
+                موضوع الرسالة
               </label>
               <input
-                type="number"
+                type="text"
                 id="subject"
                 {...register("subject", { required: true })}
                 className={`mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ${
@@ -180,7 +193,9 @@ function ContactUsPage() {
                 }`}
               />
               {errors.message && (
-                <p className="text-red-500 text-xs mt-2">حقل محتوى الرسالة مطلوب</p>
+                <p className="text-red-500 text-xs mt-2">
+                  حقل محتوى الرسالة مطلوب
+                </p>
               )}
             </div>
 

@@ -19,15 +19,18 @@ import { useUser } from "@/contexts/UserContext";
 import SignInModal from "@/components/shared/SignInModal";
 import { useRouter } from "next/navigation";
 import { useActivityLog } from "@/contexts/ActivityLogContext";
+import { motion } from "framer-motion";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 export function IrabSentenceParsingComponent() {
   const [inputText, setInputText] = useState("");
   const [parsingResult, setParsingResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { downloadPdf } = useDownloadPdf();
-  const router = useRouter()
-  const {isAuthenticated, user} = useUser()
-  const {addActivityLog} = useActivityLog()
+  const router = useRouter();
+  const { isAuthenticated, user } = useUser();
+  const { addActivityLog } = useActivityLog();
   const [showSignInModal, setShowSignInModal] = useState(false);
 
   const handleSignIn = () => {
@@ -38,7 +41,6 @@ export function IrabSentenceParsingComponent() {
   const handleCloseSignInModal = () => {
     setShowSignInModal(false);
   };
-  
 
   const handleParseSentence = async () => {
     setIsLoading(true);
@@ -66,7 +68,6 @@ export function IrabSentenceParsingComponent() {
   };
 
   const handleSaveResult = () => {
-
     if (!isAuthenticated) {
       setShowSignInModal(true);
       return;
@@ -76,19 +77,16 @@ export function IrabSentenceParsingComponent() {
       input: inputText,
       output: parsingResult,
       userId: user?.id,
-      serviceType: 'PROOF_READ'
-    })
-
+      serviceType: "PROOF_READ",
+    });
 
     toast({
       title: "تم حفظ نتيجة التحليل",
-      description: "تم حفظ نتيجة التحليل الخاصة بك بنجاح في سجل الأنشطة."
+      description: "تم حفظ نتيجة التحليل الخاصة بك بنجاح في سجل الأنشطة.",
     });
-    
   };
 
   const handleExportResult = () => {
-
     if (!isAuthenticated) {
       setShowSignInModal(true);
       return;
@@ -114,14 +112,18 @@ export function IrabSentenceParsingComponent() {
         onClose={handleCloseSignInModal}
       />
 
+      <ServiceTitle title="خدمة التدقيق اللغوي" />
+
+
+      <ServiceDescription
+        description="
+      تهدف إلى مساعدة المستخدمين في تحليل الجمل العربية وفهم وظائف الكلمات فيها من الناحية النحوية. تقدم الخدمة إعراباً تفصيلياً لكل كلمة في النص المدخل، مما يساعد في توضيح موقعها النحوي ودورها داخل الجملة. هذه الخدمة مفيدة للطلاب، المعلمين، والباحثين وكل من يرغب في تحسين معرفته بقواعد اللغة العربية وفهم تركيب الجمل بشكل أفضل. يعتمد النظام على تقنيات متقدمة في معالجة اللغة العربية لضمان دقة الإعراب وتقديم النتائج بشكل سريع وسهل الاستخدام
+      "
+      />
+
       <div className="min-h-screen bg-white p-8">
         <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-[#20b1c9] text-center my-5">
-              الإعراب
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 pt-4">
             <Textarea
               placeholder="أدخل الجملة التي تريد إعرابها هنا."
               value={inputText}
@@ -145,7 +147,10 @@ export function IrabSentenceParsingComponent() {
             </Button>
 
             {parsingResult && (
-              <div className="p-4 border-2 border-[#1C9AAF] rounded-md bg-[#f0f9fa]" dir="rtl">
+              <div
+                className="p-4 border-2 border-[#1C9AAF] rounded-md bg-[#f0f9fa]"
+                dir="rtl"
+              >
                 <h2 className="text-xl font-semibold mb-2 text-[#20b1c9]">
                   نتيجة الإعراب:
                 </h2>

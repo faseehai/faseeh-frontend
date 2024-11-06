@@ -27,6 +27,9 @@ import { useUser } from "@/contexts/UserContext";
 import { useActivityLog } from "@/contexts/ActivityLogContext";
 import SignInModal from "@/components/shared/SignInModal";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import ServiceTitle from "@/components/shared/ServiceTitle";
+import ServiceDescription from "@/components/shared/ServiceDescription";
 
 const proverbs = [
   "من طلب العلا سهر الليالي",
@@ -47,8 +50,7 @@ export function ArabicProverbStoriesComponent() {
   const { isAuthenticated, user } = useUser();
   const { addActivityLog } = useActivityLog();
   const [showSignInModal, setShowSignInModal] = useState(false);
-  const router = useRouter()
-
+  const router = useRouter();
 
   const handleSignIn = () => {
     setShowSignInModal(false);
@@ -124,7 +126,7 @@ export function ArabicProverbStoriesComponent() {
   };
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       <LoadingOverlay isLoading={isLoading} />
 
       <SignInModal
@@ -133,14 +135,24 @@ export function ArabicProverbStoriesComponent() {
         onClose={handleCloseSignInModal}
       />
 
+      <ServiceTitle title="قصص الأمثال العربية للأطفال" />
+
+      <ServiceDescription
+        description="
+        تقدم هذه الخدمة قصصاً ممتعة ومخصصة للأطفال مستوحاة من أمثال عربية شهيرة
+        يتم بناء كل قصة حول مثل عربي يعكس قيمة أو حكمة معينة، وتتم صياغة القصة
+        بلغة بسيطة وسهلة تناسب عمر الطفل، مع التركيز على الجانب التعليمي
+        والتربوي بشكل غير مباشر. يتم تخصيص القصة بناءً على اسم الطفل وعمره، مما
+        يضيف طابعاً شخصياً يزيد من ارتباط الطفل بالقصة وفهمه للدرس المستفاد. في
+        نهاية القصة، يُذكر المثل العربي ليكون خلاصة القصة ويوضح الحكمة التي
+        تعلمها الطفل بطريقة ممتعة ومشوقة. تهدف هذه الخدمة إلى غرس القيم
+        العربية التقليدية في قلوب الأطفال من خلال سرد قصص تربوية وجذابة تنمي الخيال والفهم.
+      "
+      />
+
       <div className="min-h-screen bg-white p-8">
         <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-[#20b1c9] text-center my-5">
-              قصص الأطفال بناءً على الأمثال العربية
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 pt-4">
             <div className="space-y-2" dir="rtl">
               <Label htmlFor="name">اسم الطفل</Label>
               <Input
@@ -178,18 +190,14 @@ export function ArabicProverbStoriesComponent() {
             </div>
             <div className="space-y-2" dir="rtl">
               <Label htmlFor="proverb">اختر مثل عربي</Label>
-              <Select value={proverb} onValueChange={setProverb} dir="rtl">
-                <SelectTrigger className="border-[#1C9AAF] focus:ring-[#20b1c9]">
-                  <SelectValue placeholder="اختر مثل عربي" />
-                </SelectTrigger>
-                <SelectContent>
-                  {proverbs.map((p) => (
-                    <SelectItem key={p} value={p}>
-                      {p}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+
+              <Input
+                id="proverb"
+                placeholder="اختر مثل عربي"
+                value={proverb}
+                onChange={(e) => setProverb(e.target.value)}
+                className="border-[#1C9AAF] focus:ring-[#20b1c9]"
+              />
             </div>
             <Button
               onClick={handleGenerateStory}
@@ -245,6 +253,6 @@ export function ArabicProverbStoriesComponent() {
           </CardFooter>
         </Card>
       </div>
-    </>
+    </div>
   );
 }

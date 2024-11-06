@@ -4,12 +4,12 @@ import Lottie from "lottie-react";
 
 const MediaPlayer = ({ src, loop = true, autoplay = true, className = "" }) => {
   const [animationData, setAnimationData] = useState(null);
-  const fileType = src.split(".").pop(); // Determine the file extension
+  const fileType = src ? src.split(".").pop() : null; // Determine the file extension if src is provided
 
   useEffect(() => {
-    const loadMedia = async () => {
-      if (fileType === "json") {
-        // Fetch the animation JSON file
+    // Only run on the client side
+    if (typeof window !== "undefined" && fileType === "json") {
+      const loadMedia = async () => {
         try {
           const response = await fetch(src);
           if (!response.ok) {
@@ -20,12 +20,12 @@ const MediaPlayer = ({ src, loop = true, autoplay = true, className = "" }) => {
           const data = await response.json();
           setAnimationData(data);
         } catch (err) {
-          console.error(err);
+          console.error("Error loading JSON animation:", err);
         }
-      }
-    };
+      };
 
-    loadMedia();
+      loadMedia();
+    }
   }, [src, fileType]);
 
   return (
@@ -37,12 +37,12 @@ const MediaPlayer = ({ src, loop = true, autoplay = true, className = "" }) => {
           src={src}
           loop={loop}
           autoPlay={autoplay}
-          muted // This allows autoplay without sound
-          playsInline // This helps on mobile devices
-          className="w-full h-auto object-cover" // Use object-cover for better scaling
+          muted
+          playsInline
+          className="w-full h-auto object-cover"
         />
       ) : (
-        <p>Unsupported media type: {fileType}</p>
+        <p>{src ? `Unsupported media type: ${fileType}` : "No media source provided"}</p>
       )}
     </div>
   );

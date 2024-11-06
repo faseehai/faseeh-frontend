@@ -34,7 +34,7 @@ const serviceTypeArabicMap = {
   PROFESSIONAL_EMAIL: "البريد الإلكتروني المهني",
   PROOF_READ: "التدقيق اللغوي",
   CHILDREN_STORY: "قصة للأطفال",
-  GRAMMAR_ANALYSIS: "تحليل النحو",
+  GRAMMAR_ANALYSIS: "محترف الإعراب",
   MARKETING_TEXT: "النص التسويقي",
 };
 
