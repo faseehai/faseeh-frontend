@@ -138,6 +138,7 @@ export function ArabicProverbStoriesComponent() {
       <ServiceTitle title="قصص الأمثال العربية للأطفال" />
 
       <ServiceDescription
+      videoPath="/videos/Cute muslim boy reading quran.json"
         description="
         تقدم هذه الخدمة قصصاً ممتعة ومخصصة للأطفال مستوحاة من أمثال عربية شهيرة
         يتم بناء كل قصة حول مثل عربي يعكس قيمة أو حكمة معينة، وتتم صياغة القصة
