@@ -86,7 +86,7 @@ export function LoginPageComponent() {
         <div className="flex justify-center mb-8">
           {/* Replace with your actual logo */}
           <Link href={"/"}>
-            <div className="w-32 h-32 bg-[#20b1c9] rounded-full flex items-center justify-center text-white text-2xl font-bold">
+            <div className="w-32 h-32 rounded-full flex items-center justify-center text-white text-2xl font-bold">
               <img
                 src="/images/logo.png"
                 alt="Company Logo"

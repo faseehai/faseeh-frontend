@@ -1,5 +1,12 @@
 import React from "react";
-import MediaPlayer from "./MediaPlayer";
+// import MediaPlayer from "./MediaPlayer";
+// Inside your contact-us page
+import dynamic from "next/dynamic";
+
+// Dynamically import MediaPlayer with SSR disabled
+const MediaPlayer = dynamic(() => import("@/components/shared/MediaPlayer"), {
+  ssr: false,
+});
 
 function ServiceDescription({
   description = "Add Description",
