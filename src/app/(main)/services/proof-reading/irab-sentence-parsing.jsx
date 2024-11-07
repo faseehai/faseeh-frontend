@@ -112,7 +112,7 @@ export function IrabSentenceParsingComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <ServiceTitle title="خدمة التدقيق اللغوي" />
+      <ServiceTitle title="خدمة الإعراب " />
 
 
       <ServiceDescription
