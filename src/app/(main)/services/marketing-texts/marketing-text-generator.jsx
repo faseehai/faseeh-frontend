@@ -132,7 +132,7 @@ export function MarketingTextGeneratorComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <ServiceTitle title="مولد النص التسويقي" />
+      <ServiceTitle title="نصوص تسويقية " />
 
       <ServiceDescription
       videoPath="/videos/Drafting checklist.json"
