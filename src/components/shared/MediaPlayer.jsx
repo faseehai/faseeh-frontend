@@ -32,7 +32,7 @@ const MediaPlayer = ({ src, loop = true, autoplay = true, className = "" }) => {
     <div className={className}>
       {fileType === "json" && animationData ? (
         <Lottie animationData={animationData} loop={loop} autoplay={autoplay} />
-      ) : fileType === "mp4" ? (
+      ) : fileType === "mp4" && (
         <video
           src={src}
           loop={loop}
@@ -41,8 +41,6 @@ const MediaPlayer = ({ src, loop = true, autoplay = true, className = "" }) => {
           playsInline
           className="w-full h-auto object-cover"
         />
-      ) : (
-        <p>{src ? `Unsupported media type: ${fileType}` : "No media source provided"}</p>
       )}
     </div>
   );

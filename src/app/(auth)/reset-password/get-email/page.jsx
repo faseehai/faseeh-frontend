@@ -69,7 +69,7 @@ function GetEmailForForgetPassword() {
       <div className="bg-white ring-1 ring-[#20b1c9] p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-8">
           <Link href={"/"}>
-            <div className="w-32 h-32 bg-[#20b1c9] rounded-full flex items-center justify-center text-white text-2xl font-bold">
+            <div className="w-32 h-32 rounded-full flex items-center justify-center text-white text-2xl font-bold">
             <img
                 src="/images/logo.png"
                 alt="شعار الشركة"
