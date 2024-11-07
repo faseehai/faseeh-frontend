@@ -29,7 +29,7 @@ const menu = [
         icon: <ClipboardCheck className="h-4  w-4 ml-1" />,
       },
       {
-        name: "تشكيل",
+        name: "خدمة التشكيل",
         href: "/services/tashkeel",
         icon: <NotebookPen className="h-4  w-4 ml-1" />,
       },
