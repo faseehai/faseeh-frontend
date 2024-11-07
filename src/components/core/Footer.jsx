@@ -35,23 +35,23 @@ const quickLinks = [
 
 const services = [
   {
-    title: "خدمة التدقيق اللغوي", // Proofreading Service
+    title: "خدمة الإعراب ", // Proofreading Service
     url: "/services/proof-reading",
   },
   {
-    title: "التشكيل", // Tashkeel
+    title: "خدمة التشكيل", // Tashkeel
     url: "/services/tashkeel",
   },
   {
-    title: "قصص الأطفال", // Children Stories
+    title: "قصص الأمثال للأطفال", // Children Stories
     url: "/services/children-stories",
   },
   {
-    title: "مدقق قواعد اللغة", // Grammar Checker
+    title: "خدمة التدقيق اللغوي", // Grammar Checker
     url: "/services/grammer-checker",
   },
   {
-    title: "رسائل احترافية", // Professional Emails
+    title: "رسائل البريد الاحترافية", // Professional Emails
     url: "/services/professional-emails",
   },
   {
