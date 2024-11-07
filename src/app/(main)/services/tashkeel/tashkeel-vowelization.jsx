@@ -104,7 +104,7 @@ export function TashkeelVowelizationComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <ServiceTitle title="التشكيل" />
+      <ServiceTitle title="خدمة التشكيل" />
 
 
       <ServiceDescription
