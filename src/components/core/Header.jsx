@@ -24,7 +24,7 @@ const menu = [
         icon: <Mails className="h-4  w-4 ml-1" />,
       },
       {
-        name: "خدمة الإعراب",
+        name: "خدمة التدقيق اللغوي ",
         href: "/services/grammer-checker",
         icon: <ClipboardCheck className="h-4  w-4 ml-1" />,
       },
@@ -34,7 +34,7 @@ const menu = [
         icon: <NotebookPen className="h-4  w-4 ml-1" />,
       },
       {
-        name: "خدمة التدقيق اللغوي",
+        name: "خدمة الإعراب",
         href: "/services/proof-reading",
         icon: <BookOpenText className="h-4  w-4 ml-1" />,
       },
@@ -75,11 +75,7 @@ const menu = [
       // },
     ],
   },
-  {
-    name: "قنوات الاتصال",
-    href: "/about-us",
-    icon: <Store className="h-4 w-4 ml-1" />,
-  },
+ 
   {
     name: "تواصل معنا",
     href: "/contact-us",
