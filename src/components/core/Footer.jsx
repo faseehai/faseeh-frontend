@@ -117,6 +117,32 @@ function Footer() {
           ))}
         </nav>
 
+<<<<<<< HEAD
+=======
+        {/* contact us  */}
+        <nav data-aos="fade-up">
+          <h6 className="footer-title text-[#1C9AAF]">معلومات التواصل</h6>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center">
+              <MdOutlinePhoneInTalk className="text-lg  text-[#20b1c9]" />
+              <p>+966505668558</p>
+            </div>
+          </div>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center">
+              <MdOutlineMailOutline className="text-lg  text-[#20b1c9]" />
+              <p>contact@example.com</p>
+            </div>
+          </div>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center ">
+              <IoLocationOutline className="text-lg text-[#20b1c9]" />
+              <p>المملكة العربية السعودية - القصيم - بريدة</p>
+            </div>
+          </div>
+        </nav>
+
+>>>>>>> 7ac2704 (Update Footer.jsx)
         <aside data-aos="fade-up">
           <div className="w-full flex items-end justify-end">
             <div className="flex items-start justify-start">
