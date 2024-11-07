@@ -49,7 +49,7 @@ export function HomePageComponent() {
     },
     {
       icon: CheckCircle,
-      title: "حارس القواعد",
+      title: "محترف الإعراب",
       description: "محتوى خالي من العيوب، في كل مرة",
       url: "/services/proof-reading",
     },
@@ -61,7 +61,7 @@ export function HomePageComponent() {
     },
     {
       icon: CheckSquare,
-      title: "محترف الإعراب",
+      title: "حارس القواعد",
       description: "مُحسن لغتك الشخصي",
       url: "/services/grammer-checker",
     },
