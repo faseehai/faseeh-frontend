@@ -180,7 +180,7 @@ export function ProfessionalEmailWriterComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <ServiceTitle title=" كاتب بريد إلكتروني محترف" />
+      <ServiceTitle title=" رسائل بريد إلكتروني احترافية" />
 
       <ServiceDescription
       videoPath="/videos/Mail Writing.json"
