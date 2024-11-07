@@ -135,7 +135,7 @@ export function GrammarSpellCheckComponent() {
         onClose={handleCloseSignInModal}
       />
 
-      <ServiceTitle title="خدمة التدقيق النحوي والإملائي" />
+      <ServiceTitle title="خدمة التدقيق اللغوي " />
 
       <ServiceDescription
       videoPath="/videos/Content Proofreading.json"
