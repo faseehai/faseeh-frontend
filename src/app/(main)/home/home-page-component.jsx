@@ -50,7 +50,7 @@ export function HomePageComponent() {
     {
       icon: CheckCircle,
       title: "محترف الإعراب",
-      description: "محتوى خالي من العيوب، في كل مرة",
+      description: "أداتك الذكية لإعراب النصوص العربية ",
       url: "/services/proof-reading",
     },
     {
@@ -62,7 +62,7 @@ export function HomePageComponent() {
     {
       icon: CheckSquare,
       title: "حارس القواعد",
-      description: "مُحسن لغتك الشخصي",
+      description: "محتوى خالي من العيوب، في كل مرة",
       url: "/services/grammer-checker",
     },
   ];
