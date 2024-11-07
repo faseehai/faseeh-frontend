@@ -175,7 +175,7 @@ export function ArabicProverbStoriesComponent() {
                 max={12}
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
-                  if (value >= 1 && value <= 18) {
+                  if (value >= 1 && value <= 12) {
                     setAge(value);
                   } else if (!e.target.value) {
                     setAge(""); // Allow empty input to clear the field
