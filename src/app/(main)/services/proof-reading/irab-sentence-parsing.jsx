@@ -47,9 +47,12 @@ export function IrabSentenceParsingComponent() {
 
     try {
       // Make the API request with axiosInstance
-      const response = await axiosInstance.post("/watson/proofread", {
-        content: inputText,
-      });
+      const response = await axiosInstance.post(
+        "/watson/grammatical-analysis",
+        {
+          content: inputText,
+        }
+      );
 
       // Get the generated text from the response
       const generatedText = response?.data?.generated_text;
@@ -114,9 +117,8 @@ export function IrabSentenceParsingComponent() {
 
       <ServiceTitle title="خدمة الإعراب " />
 
-
       <ServiceDescription
-      videoPath="/videos/Checking document.json"
+        videoPath="/videos/Checking document.json"
         description="
       تهدف إلى مساعدة المستخدمين في تحليل الجمل العربية وفهم وظائف الكلمات فيها من الناحية النحوية. تقدم الخدمة إعراباً تفصيلياً لكل كلمة في النص المدخل، مما يساعد في توضيح موقعها النحوي ودورها داخل الجملة. هذه الخدمة مفيدة للطلاب، المعلمين، والباحثين وكل من يرغب في تحسين معرفته بقواعد اللغة العربية وفهم تركيب الجمل بشكل أفضل. يعتمد النظام على تقنيات متقدمة في معالجة اللغة العربية لضمان دقة الإعراب وتقديم النتائج بشكل سريع وسهل الاستخدام
       "

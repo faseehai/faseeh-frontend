@@ -6,7 +6,7 @@ import { RiCustomerService2Fill, RiTeamFill } from "react-icons/ri";
 
 function AboutUsPage() {
   return (
-    <div className="bg-white pt-[25%] md:pt-[10%]">
+    <div className="bg-white pt-[25%] md:pt-[0%]">
       {/* about us  */}
       <div
         data-aos="fade-up"
