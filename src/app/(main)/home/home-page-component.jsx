@@ -49,8 +49,8 @@ export function HomePageComponent() {
     },
     {
       icon: CheckCircle,
-      title: "حارس القواعد",
-      description: "محتوى خالي من العيوب، في كل مرة",
+      title: "محترف الإعراب",
+      description: "أداتك الذكية لإعراب النصوص العربية ",
       url: "/services/proof-reading",
     },
     {
@@ -61,8 +61,8 @@ export function HomePageComponent() {
     },
     {
       icon: CheckSquare,
-      title: "محترف الإعراب",
-      description: "مُحسن لغتك الشخصي",
+      title: "حارس القواعد",
+      description: "محتوى خالي من العيوب، في كل مرة",
       url: "/services/grammer-checker",
     },
   ];
