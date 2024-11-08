@@ -81,8 +81,8 @@ export function IrabSentenceParsingComponent() {
     });
 
     toast({
-      title: "تم حفظ نتيجة التحليل",
-      description: "تم حفظ نتيجة التحليل الخاصة بك بنجاح في سجل الأنشطة.",
+      title: "تم حفظ نتيجة الإعراب",
+      description: "تم حفظ نتيجة الإعراب الخاصة بك بنجاح في سجل الأنشطة.",
     });
   };
 
