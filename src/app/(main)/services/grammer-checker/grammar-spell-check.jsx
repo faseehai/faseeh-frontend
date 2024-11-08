@@ -68,7 +68,7 @@ export function GrammarSpellCheckComponent() {
     try {
       // Make the API request with axiosInstance
       const response = await axiosInstance.post(
-        "/watson/proofread",
+        "/watson/grammatical-analysis",
         {
           content: inputText,
         }

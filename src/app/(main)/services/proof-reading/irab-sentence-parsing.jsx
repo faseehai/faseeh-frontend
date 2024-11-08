@@ -48,7 +48,7 @@ export function IrabSentenceParsingComponent() {
     try {
       // Make the API request with axiosInstance
       const response = await axiosInstance.post(
-        "/watson/grammatical-analysis",
+        "/watson/proofread",
         {
           content: inputText,
         }
