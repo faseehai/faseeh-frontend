@@ -132,7 +132,7 @@ function AboutUsPage() {
       </div>
 
       {/* testimonials */}
-      <div className="pb-10 mb-20">
+      {/* <div className="pb-10 mb-20">
         <div className="flex flex-col justify-center items-center text-black p-10">
           <span className="inline-block mt-20 text-2xl uppercase border-b-4 text-[#20b1c9]">
             آراء العملاء
@@ -146,7 +146,7 @@ function AboutUsPage() {
         <div data-aos="fade-up" className="w-[85vw] m-auto">
           <TestimonialCarousel />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
