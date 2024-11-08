@@ -71,7 +71,7 @@ function Footer() {
           <div className="cursor-pointer">
             <div className="flex gap-x-2 items-center">
               <MdOutlinePhoneInTalk className="text-lg  text-[#20b1c9]" />
-              <p>02012156485</p>
+              <p>+966505668558</p>
             </div>
           </div>
           <div className="cursor-pointer">
@@ -83,7 +83,7 @@ function Footer() {
           <div className="cursor-pointer">
             <div className="flex gap-x-2 items-center ">
               <IoLocationOutline className="text-lg text-[#20b1c9]" />
-              <p>2360 Hood Avenue, San Diego, CA, 92123</p>
+              <p>المملكة العربية السعودية - القصيم - بريدة </p>
             </div>
           </div>
         </nav>
