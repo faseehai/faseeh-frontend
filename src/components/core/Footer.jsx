@@ -64,6 +64,30 @@ function Footer() {
   return (
     <>
       <footer className="footer bg-[#DEF4F7] text-black opacity-80 p-10 md:grid md:grid-cols-4 font_barlow">
+        
+        {/* contact us  */}
+        <nav data-aos="fade-up">
+          <h6 className="footer-title text-[#1C9AAF]">معلومات التواصل</h6>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center">
+              <MdOutlinePhoneInTalk className="text-lg  text-[#20b1c9]" />
+              <p>02012156485</p>
+            </div>
+          </div>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center">
+              <MdOutlineMailOutline className="text-lg  text-[#20b1c9]" />
+              <p>contact@example.com</p>
+            </div>
+          </div>
+          <div className="cursor-pointer">
+            <div className="flex gap-x-2 items-center ">
+              <IoLocationOutline className="text-lg text-[#20b1c9]" />
+              <p>2360 Hood Avenue, San Diego, CA, 92123</p>
+            </div>
+          </div>
+        </nav>
+        
         {/* Quick link  */}
         <nav className="md:ms-10" data-aos="fade-up">
           <h6 className="footer-title text-[#1C9AAF]">روابط سريعة</h6>
@@ -91,29 +115,6 @@ function Footer() {
               {link.title}
             </Link>
           ))}
-        </nav>
-
-        {/* contact us  */}
-        <nav data-aos="fade-up">
-          <h6 className="footer-title text-[#1C9AAF]">معلومات التواصل</h6>
-          <div className="cursor-pointer">
-            <div className="flex gap-x-2 items-center">
-              <MdOutlinePhoneInTalk className="text-lg  text-[#20b1c9]" />
-              <p>02012156485</p>
-            </div>
-          </div>
-          <div className="cursor-pointer">
-            <div className="flex gap-x-2 items-center">
-              <MdOutlineMailOutline className="text-lg  text-[#20b1c9]" />
-              <p>contact@example.com</p>
-            </div>
-          </div>
-          <div className="cursor-pointer">
-            <div className="flex gap-x-2 items-center ">
-              <IoLocationOutline className="text-lg text-[#20b1c9]" />
-              <p>2360 Hood Avenue, San Diego, CA, 92123</p>
-            </div>
-          </div>
         </nav>
 
         <aside data-aos="fade-up">
